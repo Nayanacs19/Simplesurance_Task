@@ -18,6 +18,7 @@ public class StringConstants {
     public static String CARD_NUMBER = "4242424242424242";
     public static String EXP_DATE = "10/28";
     public static String CVC = "123";
-    public static String CUSTOMER_DATA_FILE_PATH = "D:\\Test\\Simplesurance_Task\\src\\main\\resources\\customer_details.xlsx";
-    public static String BATCH_FILE_PATH = "D:\\Test\\Simplesurance_Task\\src\\main\\resources\\testdata.csv";
+    public static String CUSTOMER_DATA_FILE_PATH = "\\src\\main\\resources\\customer_details.xlsx";
+    public static String BATCH_FILE_PATH = "\\src\\main\\resources\\testdata.csv";
+    public static final String USER_PATH = System.getProperty("user.dir");
 }

@@ -15,7 +15,7 @@ public final class TestDataExcel {
         Object[][] data = new Object[1][8];
 
         try {
-            File file = new File(StringConstants.CUSTOMER_DATA_FILE_PATH);
+            File file = new File(StringConstants.USER_PATH+StringConstants.CUSTOMER_DATA_FILE_PATH);
             FileInputStream inputStream = new FileInputStream(file);
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             XSSFSheet customer_sheet = workbook.getSheet("customer_details");

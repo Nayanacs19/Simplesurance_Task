@@ -89,7 +89,7 @@ public final class Utils {
             Robot robot = new Robot();
             robot.delay(3000);
             //copy the path to the clipboard
-            StringSelection ss = new StringSelection(StringConstants.BATCH_FILE_PATH);
+            StringSelection ss = new StringSelection(StringConstants.USER_PATH+StringConstants.BATCH_FILE_PATH);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
             //Copy the File path
