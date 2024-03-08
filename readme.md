@@ -9,7 +9,8 @@
 2. mvn version 3.2.5
 3. Selenium 4.0
 
-Project Structure
+**Project Structure**
+
 ![img_2.png](img_2.png)
 
 **Running Test**
@@ -17,8 +18,10 @@ Project Structure
 2. Open project in code editor like eclipse or intellij idea ==> right click on testng.xml ==> run as testng.xml
 
 **Report Path**
+
 <ROOT_PROJECT>/report.html
 
 **Test Summary Report:**
+
 ![img_1.png](img_1.png)
 ![img.png](img.png)
