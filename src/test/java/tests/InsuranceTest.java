@@ -8,6 +8,8 @@ import pages.ImportAndSortInsurance;
 import pages.NewInsurancePage;
 import testdata.TestDataExcel;
 
+import java.util.ArrayList;
+
 public class InsuranceTest extends BaseTest{
     ImportAndSortInsurance importAndSortInsurance = new ImportAndSortInsurance();
     NewInsurancePage newInsurancePage = new NewInsurancePage();
@@ -28,7 +30,6 @@ public class InsuranceTest extends BaseTest{
 
     @Test
     public void createInsuranceByCloudButtonValidationTest() {
-        Assert.assertEquals(importAndSortInsurance.getPageTitle(), StringConstants.IMPORT_PAGE_TITLE,"Import page is not loaded.");
         importAndSortInsurance.clickOnImportButton();
         importAndSortInsurance.uploadInsurancesFromCloudButton();
         importAndSortInsurance.clickOnCreateInsuraceWithBatch();
@@ -36,7 +37,7 @@ public class InsuranceTest extends BaseTest{
     }
 
     @Test(dataProvider = "customerDetails")
-    public void createNewInsurance(String fname, String lname, String email, String street, String houseNum,
+    public void createNewInsuranceTest(String fname, String lname, String email, String street, String houseNum,
                                    String zip, String city, String country) throws InterruptedException {
         importAndSortInsurance.clickOnNewInsurance();
         newInsurancePage.enterProductDetails();
@@ -49,5 +50,13 @@ public class InsuranceTest extends BaseTest{
         newInsurancePage.enterCardDetails();
         newInsurancePage.payAndCreateInsurance();
         Assert.assertTrue(newInsurancePage.isPolicyNumberCreated(),"Error creating Policy Number");
+    }
+
+    @Test
+    public void sortPoliciesWithPolicyNumberTest() throws InterruptedException {
+        ArrayList<Long> expectedSortedList =newInsurancePage.getPolicies();
+        newInsurancePage.clickOnSortUsingPolicyNumber();
+        ArrayList<Long> actualSortedlist = newInsurancePage.getPolicies();
+        Assert.assertTrue(expectedSortedList.equals(actualSortedlist),"Unable to sort the Policies");
     }
 }

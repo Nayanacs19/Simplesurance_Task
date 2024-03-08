@@ -15,14 +15,14 @@ public class TestListeners implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         try {
-            ExtentReportLogger.pass(result.getName()+ " is Passed");
+            ExtentReportLogger.pass(result);
         } catch (IOException e) {
             System.out.println(e.fillInStackTrace());
         }
     }
     @Override
     public void onTestFailure(ITestResult result) {
-        ExtentReportLogger.fail(result.getName()+ " is failed");
+        ExtentReportLogger.fail(result);
     }
 
     @Override

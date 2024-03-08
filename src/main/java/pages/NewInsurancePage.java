@@ -7,6 +7,8 @@ import enums.WaitStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NewInsurancePage {
@@ -54,6 +56,10 @@ public class NewInsurancePage {
     private static By iFRAME = By.xpath("//div[@class='StripeElement StripeElement--empty']//div//iframe");
     private static By PLACE_ORDER = By.xpath("//div//button[1]");
     private static By POLICY_NUMBER = By.xpath("//table[@class='jss27']/tbody/tr[2]/td[2]/div");
+
+    //Sorting Elements
+    private static By SORT_BUTTON = By.xpath("//*[local-name()='svg' and @data-testid='ExpandMoreIcon']");
+    private static By POLICY_NUM_TABLE = By.xpath("//table[@data-testid='policy-list']//tr//button");
     public void enterProductDetails() {
         click(LAND, WaitStrategy.CLICKABLE.getWaitStrategy());
         click(SELECTED_COUNTRY_GERMANY, WaitStrategy.CLICKABLE.getWaitStrategy());
@@ -125,5 +131,23 @@ public class NewInsurancePage {
         return isDisplayed(POLICY_NUMBER);
     }
 
+    public void clickOnSortUsingPolicyNumber(){
+        click(SORT_BUTTON, WaitStrategy.CLICKABLE.getWaitStrategy());
+    }
+
+    public ArrayList<Long> getPolicies(){
+        ArrayList<Long> policies = new ArrayList<Long>();
+        List<WebElement> elements = getListOfElements(POLICY_NUM_TABLE);
+        for (int i = 0; i <elements.size(); i++) {
+            policies.add(Long.parseLong(elements.get(i).getText()));
+        }
+        return policies;
+    }
+
+    public ArrayList<Long> expectedPolicyList(){
+        ArrayList<Long> policylist = getPolicies();
+         Collections.sort(policylist);
+         return policylist;
+    }
 }
 
